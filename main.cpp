@@ -16,18 +16,19 @@ int main(){
 		test[i] = random() % (TEST_SIZE);
 	}
 
+	map<uint64_t, uint64_t> map_storage;
+	Tree<uint64_t, uint64_t> tree_storage;
+
 	{
 		LOG_DURATION("std::map");
-		map<uint64_t, uint64_t> storage;
 		for(size_t i = 0; i < TEST_SIZE; i++){
-			storage[test[i]] = test[i];
+			map_storage[test[i]] = test[i];
 		}
 	}
 	{
 		LOG_DURATION("tree");
-		Tree<uint64_t, uint64_t> storage;
 		for(size_t i = 0; i < TEST_SIZE; i++){
-			storage.Insert(test[i], test[i]);
+			tree_storage.Insert(test[i], test[i]);
 		}
 	}
 	return 0;
